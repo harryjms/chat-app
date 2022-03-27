@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const Chats = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Chats" component={ChatList} />
+      <Stack.Screen name="ChatList" component={ChatList} />
       <Stack.Screen name="ChatView" component={ChatView} />
     </Stack.Navigator>
   );

@@ -1,10 +1,8 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  Image,
   PlatformColor,
   TouchableHighlight,
 } from "react-native";
