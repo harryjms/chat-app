@@ -11,6 +11,7 @@ import { StyleSheet, useColorScheme } from "react-native";
 import Grid from "./views/Grid";
 import Chats from "./views/Chats/index";
 import Icon from "./components/Icon";
+import ProfileIndex from "./views/Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ export default function App() {
     <NavigationContainer theme={scheme === "dark" ? DarkTheme : DefaultTheme}>
       <Tab.Navigator>
         <Tab.Screen
-          name="PeopleView"
+          name="PeopleIndex"
           component={Grid}
           options={{
             title: "People",
@@ -35,7 +36,7 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="ChatView"
+          name="ChatIndex"
           component={Chats}
           options={{
             title: "Chats",
@@ -50,8 +51,8 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="ProfileView"
-          component={Grid}
+          name="ProfileIndex"
+          component={ProfileIndex}
           options={{
             title: "Profile",
             tabBarIcon: ({ focused, size, color }) => (

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Dimensions, Image, View } from "react-native";
+import { Dimensions, View } from "react-native";
+import { Image } from "react-native-expo-image-cache";
 
 interface IProfileImageProps {
   source: string | null;
@@ -7,7 +8,6 @@ interface IProfileImageProps {
 }
 
 const ProfileImage: React.FC<IProfileImageProps> = ({ source, size }) => {
-  const [loaded, setLoaded] = useState(false);
   const imageSize = size || Dimensions.get("window").width / 3;
 
   return (
@@ -17,27 +17,19 @@ const ProfileImage: React.FC<IProfileImageProps> = ({ source, size }) => {
           style={{
             width: imageSize,
             height: imageSize,
-            opacity: loaded ? 1 : 0,
-            position: "absolute",
           }}
-          source={{
-            uri: source,
-          }}
-          onLoad={() => {
-            console.log("loaded");
-            setLoaded(true);
-          }}
+          uri={source}
+          preview={require("../assets/blank-profile.png")}
         />
-      ) : null}
-      <Image
-        style={{
-          width: imageSize,
-          height: imageSize,
-          opacity: loaded ? 0 : 1,
-          position: "absolute",
-        }}
-        source={require("../assets/blank-profile.png")}
-      />
+      ) : (
+        <Image
+          style={{
+            width: imageSize,
+            height: imageSize,
+          }}
+          uri={require("../assets/blank-profile.png")}
+        />
+      )}
     </View>
   );
 };
